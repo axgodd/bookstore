@@ -21,7 +21,7 @@ export const BookUpdatePage: React.FC<{
     newBook: Book
 }> = ({isUpdateBook, setIsUpdateBook, newBook}) => {
     const dispatch = useDispatch();
-    const [data, setData] = useState(newBook);
+    const [data, setData] = useState<Book>(newBook);
 
     useEffect(() => {
         if (newBook) {

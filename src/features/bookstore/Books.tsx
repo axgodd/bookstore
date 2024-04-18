@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {addBook, BookState, deleteBook} from './bookSlice'
+import {addBook, Book, BookState, deleteBook} from './bookSlice'
 import {RootState} from "../../app/store";
 import {Box, Button, ButtonBase, Grid, Modal, Paper, styled, TextField, Typography} from "@mui/material";
 import {BookUpdatePage} from "./BookUpdatePage";
@@ -19,10 +19,10 @@ const style = {
 const BookList = () => {
     const books = useSelector((state: RootState) => state.books.books);
     const dispatch = useDispatch();
-    const [isModalOpen, setModalOpen] = useState(false);
-    const [newBook, setNewBook] = useState({id: 0, name: '', price: 0, category: '', description: ''});
-    const [isUpdateBook, setIsUpdateBook] = useState(false);
-    const [selectedBook, setSelectedBook] = useState(0);
+    const [isModalOpen, setModalOpen] = useState<boolean>(false);
+    const [newBook, setNewBook] = useState<Book>({id: 0, name: '', price: 0, category: '', description: ''});
+    const [isUpdateBook, setIsUpdateBook] = useState<boolean>(false);
+    const [selectedBook, setSelectedBook] = useState<number>(0);
 
     const handleAddBook = () => {
         dispatch(addBook({...newBook, id: Date.now()}))
